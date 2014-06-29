@@ -6,7 +6,7 @@ GO
 
 -- tablas principales
 
-CREATE TABLE Autor 
+CREATE TABLE Autor
 (
 codigo int NOT NULL,
 nombres varchar(50) NOT NULL,
@@ -14,7 +14,7 @@ email varchar(60) NULL,
 );
 
 alter table Autor add constraint PK_AUTOR
-primary key (codigo); 
+primary key (codigo);
 
 INSERT INTO Autor VALUES
 (1,'Maribel Sabana Mendoza','mary_123@gmail.com'),
@@ -40,14 +40,14 @@ telefono varchar(20) NULL
 );
 
 alter table Editorial add constraint PK_EDITORIAL
-primary key (codigo); 
+primary key (codigo);
 
-INSERT INTO Editorial VALUES 
+INSERT INTO Editorial VALUES
 (1,'NAVARRETE','Av. Nicolas Piérola 351 SanLuis','5213696'),
 (2,'NORMA','Calle Los Pinos 841 Santa Beatriz','3581299'),
 (3,'SANTILLANA','Av. Juan Suarez 101 Lima','2315184 - 5329566');
 
-CREATE TABLE EspecialidadLibro 
+CREATE TABLE EspecialidadLibro
 (
 codigo int NOT NULL,
 nombre varchar(50) NOT NULL
@@ -56,7 +56,7 @@ nombre varchar(50) NOT NULL
 alter table EspecialidadLibro add constraint PK_ESPECIALIDADLIBRO
 primary key (codigo);
 
-INSERT INTO EspecialidadLibro VALUES 
+INSERT INTO EspecialidadLibro VALUES
 (1,'MATEMÁTICA'),
 (2,'COMPUTACIÓN'),
 (3,'INGLÉS'),
@@ -73,7 +73,7 @@ denominacion varchar(30) NOT NULL
 alter table EstadoCarnet add constraint PK_ESTADOCARNET
 primary key (codigo);
 
-INSERT INTO EstadoCarnet VALUES 
+INSERT INTO EstadoCarnet VALUES
 ('H','Habilitado'),
 ('R','Retenido'),
 ('S','Suspendido');
@@ -87,12 +87,12 @@ denominacion varchar(30) NOT NULL
 alter table EstadoLibro add constraint PK_ESTADOLIBRO
 primary key (codigo);
 
-INSERT INTO EstadoLibro VALUES 
+INSERT INTO EstadoLibro VALUES
 ('D','Disponible'),
 ('F','Fuera de Servicio'),
 ('P','Prestado');
 
-CREATE TABLE Lector 
+CREATE TABLE Lector
 (
 codigo int NOT NULL identity(1,1),
 nombres varchar(40) NOT NULL,
@@ -102,7 +102,7 @@ apellidos varchar(40) NOT NULL
 alter table Lector add constraint PK_LECTOR
 primary key (codigo);
 
-INSERT INTO Lector VALUES 
+INSERT INTO Lector VALUES
 ('Veruska','Berrocal'),
 ('Gabriel','Sotomayor'),
 ('Walter','Acosta'),
@@ -129,13 +129,13 @@ foreign key (carnet_codigo) references EstadoCarnet;
 alter table Carnet add constraint FK_LECTOR_CARNETBIBLIOTECA
 foreign key (lector_codigo) references Lector;
 
-INSERT INTO Carnet VALUES 
+INSERT INTO Carnet VALUES
 (1,'- -','H',1),
 (2,'-','H',2),
 (3,'-','H',3),
 (4,'-','H',4);
 
-CREATE TABLE Libro 
+CREATE TABLE Libro
 (
 codigo int NOT NULL,
 titulo varchar(50) NOT NULL,
@@ -158,7 +158,7 @@ foreign key (especialidad_libro_codigo) references EspecialidadLibro;
 alter table Libro add constraint FK_ESTADOLIBRO
 foreign key (estado_libro_codigo) references EstadoLibro;
 
-INSERT INTO Libro VALUES 
+INSERT INTO Libro VALUES
 (1,'Matemática Primer Grado','25-25-9541',88,3,1,'D'),
 (2,'Aprendiendo Inglés','321-4522-1',75,2,3,'D'),
 (3,'La vida de Jesús','101-85-999',50,1,6,'D'),
@@ -176,7 +176,7 @@ INSERT INTO Libro VALUES
 (444,'REPARACION DE PC','63000',265,1,2,'D'),
 (2013008743,'Casos de la vida',NULL,123,1,1,'D');
 
-CREATE TABLE LibroAutor 
+CREATE TABLE LibroAutor
 (
 codigo int NOT NULL,
 autor_codigo int NOT NULL,
@@ -192,7 +192,7 @@ foreign key (autor_codigo) references Autor;
 alter table LibroAutor add constraint FK_LIBRO_LIBROAUTOR
 foreign key (libro_codigo) references Libro;
 
-INSERT INTO LibroAutor VALUES 
+INSERT INTO LibroAutor VALUES
 (1,1,1),
 (2,2,2),
 (3,4,4),
@@ -204,13 +204,29 @@ INSERT INTO LibroAutor VALUES
 (9,4,123),
 (10,12,9);
 
-CREATE TABLE Usuario 
+CREATE TABLE TipoUsuario
+(
+codigo int IDENTITY(1,1) NOT NULL,
+descripcion varchar(50) NO NULL
+)
+
+alter table TipoUsuario add constraint PK_TIPOUSUARIO
+primary key (codigo);
+
+INSERT INTO TipoUsuario 
+(descripcion)
+VALUES
+('administrador'),
+('estudiante');
+
+CREATE TABLE Usuario
 (
 codigo int NOT NULL,
 usuario varchar(45) NOT NULL,
 clave varchar(45) NOT NULL,
+nombre_completo varchar(100) NULL,
 lector_codigo int NULL,
-tipo_usuario varchar(1) NULL
+tipo_usuario_codigo varchar(1) NULL
 );
 
 alter table Usuario add constraint PK_USUARIO
@@ -219,25 +235,33 @@ primary key (codigo);
 alter table Usuario add constraint FK_LECTOR_USUARIO
 foreign key (lector_codigo) references Lector;
 
-INSERT INTO Usuario VALUES 
-(1,'vberrocal','111',1,'A'),
-(2,'gsotomayor','222',2,'U'),
-(3,'wacosta','333',3,'A'),
-(4,'ecayllahua','444',4,'U');
+alter table Usuario add constraint FK_TIPO_USUARIO
+foreign key (tipo_usuario_codigo) references TipoUsuario;
 
-CREATE TABLE Prestamo 
+INSERT INTO Usuario VALUES
+(1,'vberrocal','111','',1,'A'),
+(2,'gsotomayor','222','',2,'U'),
+(3,'wacosta','333','',3,'A'),
+(4,'ecayllahua','444','',4,'U');
+
+-- tiene campos de auditoria
+CREATE TABLE Prestamo
 (
-numero int NOT NULL,
+codigo int NOT NULL,
 usuario_codigo int NOT NULL,
 libro_codigo int NOT NULL,
 fecha_prestamo varchar(20) NOT NULL,
 fecha_devolucion varchar(20) NOT NULL,
 devuelto char(1) NOT NULL,
-observacion varchar(100) NULL
+observacion varchar(100) NULL,
+usuario_creacion_codigo int NOT NULL,
+fecha_creacion datetime NOT NULL,
+usuario_ultima_actualizacion_codigo int NOT NULL,
+fecha_ultima_actualizacion datetime NOT NULL
 );
 
 alter table Prestamo add constraint PK_PRESTAMO
-primary key (numero);
+primary key (codigo);
 
 alter table Prestamo add constraint FK_USUARIO
 foreign key (usuario_codigo) references Usuario;
@@ -245,7 +269,7 @@ foreign key (usuario_codigo) references Usuario;
 alter table Prestamo add constraint FK_LIBRO_PRESTAMO
 foreign key (libro_codigo) references Libro;
 
-INSERT INTO Prestamo VALUES 
+INSERT INTO Prestamo VALUES
 (1,3,4,'12/09/2014','13/09/2014','0','OBSERVACION'),
 (2,3,444,'12/09/2014','03/10/2014','0','OBSERVACION'),
 (3,3,444,'12/09/2014','03/10/2014','0','OBSERVACION'),
