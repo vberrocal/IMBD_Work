@@ -137,3 +137,17 @@ LEFT JOIN Estudiante es
 ON ev.id_estudiante = es.id_estudiante
 LEFT JOIN Curso c
 on ev.id_curso = c.id_curso;
+
+-- cantidad de alumnos por ciclo que NO tienen registrada nota de la evaluación del trabajo final
+-- tipo = 'TF'
+
+select COUNT(*) as 'N° Estudiantes',
+esc.ciclo as 'Ciclo'
+from Estudiante_Curso esc
+join Estudiante e
+on esc.id_estudiante = e.id_estudiante
+join Evaluacion ev
+on esc.id_estudiante = ev.id_estudiante
+where not exists (select * from Evaluacion eva where tipo = 'TF'
+and eva.id_estudiante = esc.id_estudiante)
+group by esc.ciclo
