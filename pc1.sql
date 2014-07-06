@@ -86,3 +86,45 @@ SET NOCOUNT ON;
 update dbo.Evaluacion set fecha_modificacion = GETDATE() where id_evaluacion = @@IDENTITY
 END
 GO
+
+-- Procedimiento almacenado para obtener el promedio final de un curso
+drop PROCEDURE uspObtenerPromedioCurso
+GO
+
+CREATE PROCEDURE uspObtenerPromedioCurso 
+@idCurso int,
+@idEstudiante int,
+@promedio_pc float OUTPUT,
+@trabajo_final float OUTPUT,
+@eveluacion_final float OUTPUT,
+@promedio float OUTPUT
+AS
+
+select @promedio_pc = avg(nota) from Evaluacion
+where tipo = 'PC' and id_estudiante = @idEstudiante
+and id_curso = @idCurso
+
+select @trabajo_final = nota from Evaluacion
+where tipo = 'TF' and id_estudiante = @idEstudiante
+and id_curso = @idCurso
+
+select @eveluacion_final = nota from Evaluacion
+where tipo = 'EB' and id_estudiante = @idEstudiante
+and id_curso = @idCurso
+
+set @promedio = (@promedio_pc * 0.4) + (@trabajo_final * 0.3) + (@eveluacion_final * 0.3)
+
+GO
+
+declare @promedio float,
+@promedio_pc float,
+@trabajo_final float,
+@eveluacion_final float
+
+execute uspObtenerPromedioCurso 1,1,
+@promedio_pc  OUTPUT,
+@trabajo_final  OUTPUT,
+@eveluacion_final OUTPUT, 
+@promedio OUTPUT
+select @promedio as 'Promedio Final'
+go
