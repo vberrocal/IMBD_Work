@@ -47,7 +47,7 @@ ALTER TABLE Estudiante_Curso ADD CONSTRAINT CK_nota_final CHECK (nota_final >= 0
 CREATE TABLE Evaluacion (
 	id_evaluacion int IDENTITY(1,1) NOT NULL,
     id_curso [nvarchar](6) NOT NULL,
-    id_estudiante [nvarchar](10) NOT NULL,
+    id_estudiante [nvarchar](10) NULL,
     tipo [char](2) NOT NULL,   
     fecha_evaluacion [datetime] NOT NULL,
     nota [decimal](4,2) NOT NULL)
@@ -128,3 +128,12 @@ execute uspObtenerPromedioCurso 1,1,
 @promedio OUTPUT
 select @promedio as 'Promedio Final'
 go
+
+-- Parte 2
+SELECT (es.nombres+' '+es.ap_paterno+' '+es.ap_materno) as 'Nombre Completo',
+c.nombre as 'Curso', ev.tipo as 'Tipo', ev.nota as 'Nota'
+FROM Evaluacion ev
+LEFT JOIN Estudiante es
+ON ev.id_estudiante = es.id_estudiante
+LEFT JOIN Curso c
+on ev.id_curso = c.id_curso;
