@@ -151,3 +151,41 @@ on esc.id_estudiante = ev.id_estudiante
 where not exists (select * from Evaluacion eva where tipo = 'TF'
 and eva.id_estudiante = esc.id_estudiante)
 group by esc.ciclo
+
+-- creacion de los usuarios
+USE [master]
+GO
+CREATE LOGIN [appuser] WITH PASSWORD=N'123456' 
+MUST_CHANGE, DEFAULT_DATABASE=[PC1],
+ CHECK_EXPIRATION=ON, CHECK_POLICY=ON
+GO
+USE [PC1]
+GO
+CREATE USER [appuser] FOR LOGIN [appuser]
+GO
+
+USE [master]
+GO
+CREATE LOGIN [appadmin] WITH PASSWORD=N'123456' 
+MUST_CHANGE, DEFAULT_DATABASE=[PC1],
+ CHECK_EXPIRATION=ON, CHECK_POLICY=ON
+GO
+USE [PC1]
+GO
+CREATE USER [appadmin] FOR LOGIN [appadmin]
+GO
+
+-- permisos de solo lectura
+USE PC1
+GRANT SELECT ON Curso TO appuser
+GRANT SELECT ON Estudiante TO appuser
+GRANT SELECT ON Estudiante_Curso TO appuser
+GRANT SELECT ON Evaluacion TO appuser
+GO
+
+USE PC1
+GRANT SELECT, UPDATE, INSERT, DELETE ON Curso TO appadmin
+GRANT SELECT, UPDATE, INSERT, DELETE ON Estudiante TO appadmin
+GRANT SELECT, UPDATE, INSERT, DELETE ON Estudiante_Curso TO appadmin
+GRANT SELECT, UPDATE, INSERT, DELETE ON Evaluacion TO appadmin
+GO
