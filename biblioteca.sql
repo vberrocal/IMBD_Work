@@ -40,19 +40,32 @@ CREATE TABLE Libro
 (
 idLibro int identity(1,1) NOT NULL,
 titulo varchar(50) NOT NULL,
-registro date NULL,
-cantidad_paginas int NULL,
-editorial_id int NOT NULL,
-generolibro_id int NOT NULL
+cantidad_paginas int NULL
 );
 
 alter table Libro add constraint PK_LIBRO
 primary key (idLibro);
 
-alter table Libro add constraint FK_EDITORIAL
+CREATE TABLE DetalleLibro
+(
+idDetalleLibro int identity(1,1) NOT NULL,
+libro_id int NOT NULL,
+editorial_id int NOT NULL,
+generolibro_id int NOT NULL,
+fecha_creacion datetime NULL,
+fecha_ultima_actualizacion datetime NULL
+)
+
+alter table DetalleLibro add constraint PK_DETALLELIBRO
+primary key (idDetalleLibro);
+
+alter table DetalleLibro add constraint FK_LIBRO
+foreign key (libro_id) references Libro;
+
+alter table DetalleLibro add constraint FK_EDITORIAL
 foreign key (editorial_id) references Editorial;
 
-alter table Libro add constraint FK_GENEROLIBRO
+alter table DetalleLibro add constraint FK_GENEROLIBRO
 foreign key (generolibro_id) references GeneroLibro;
 
 
@@ -71,7 +84,6 @@ foreign key (autor_id) references Autor;
 
 alter table LibroAutor add constraint FK_LIBRO_LIBRO_AUTOR
 foreign key (libro_id) references Libro;
-
 
 CREATE TABLE TipoUsuario
 (
@@ -97,6 +109,32 @@ primary key (idUsuario);
 
 alter table Usuario add constraint FK_TIPO_USUARIO
 foreign key (tipousuario_id) references TipoUsuario;
+
+CREATE TABLE Universidad
+(
+idUniversidad int IDENTITY(1,1) NOT NULL,
+nombre varchar(50) NOT NULL,
+direccion varchar(50) NULL
+)
+
+alter table Universidad add constraint PK_UBICACION
+primary key (idUniversidad);
+
+CREATE TABLE CentroEstudioUsuario
+(
+idCentroEstudioUsuario int IDENTITY(1,1) NOT NULL,
+usuario_id int NOT NULL,
+universidad_id int NOT NULL
+)
+
+alter table CentroEstudioUsuario add constraint PK_CENTRO_ESTUDIO_USUARIO
+primary key (idCentroEstudioUsuario);
+
+alter table CentroEstudioUsuario add constraint FK_CENTRO_ESTUDIO_USUARIO_USUARIO
+foreign key (usuario_id) references Usuario;
+
+alter table CentroEstudioUsuario add constraint FK_CENTRO_ESTUDIO_USUARIO_UNIVERSIDAD
+foreign key (universidad_id) references Universidad;
 
 CREATE TABLE Prestamo
 (
@@ -156,6 +194,20 @@ primary key (idNivelDemandaLibro);
 -- 2
 -- crear un procemiento almacenado para hacer la actualizacion automatica
 
+-- Medir la cantidad de estudiantes por universidad (progreso....)
+CREATE TABLE DemandaEstudiante
+(
+idDemandaEstudiante int IDENTITY(1,1) NOT NULL,
+centroestudiousuario_id int NOT NULL,
+cantidad int NULL, -- cantidad de estudiantes por universidad
+)
+
+alter table DemandaEstudiante add constraint PK_DEMANDA_ESTUDIANTE
+primary key (idDemandaEstudiante);
+
+alter table DemandaEstudiante add constraint FK_DEMANDA_CENTRO_ESTUDIO
+foreign key (centroestudiousuario_id) references CentroEstudioUsuario;
+
 CREATE TABLE EspacioLectura
 (
 idEspacioLectura varchar(10) NOT NULL,
@@ -169,7 +221,7 @@ primary key (idEspacioLectura);
 
 CREATE TABLE EspacioLecturaDetalle
 (
-idEspacioLecturaDetalle int IDENTITY(1,1) NOT NULL,
+idEspLectDetalle int IDENTITY(1,1) NOT NULL,
 espaciolectura_id varchar(10) NOT NULL,
 usuario_id int NOT NULL,
 disponible bit NULL,
@@ -178,7 +230,7 @@ fecha_ultima_actualizacion datetime NULL
 )
 
 alter table EspacioLecturaDetalle add constraint PK_ESPACIO_LECTURA_DETALLE
-primary key (idEspacioLecturaDetalle);
+primary key (idEspLectDetalle);
 
 alter table EspacioLecturaDetalle add constraint FK_ESPACIO_LECTURA_DETALLE_ESPACIO_LECTURA
 foreign key (espaciolectura_id) references EspacioLectura;
@@ -217,3 +269,38 @@ primary key (idDetalleCarnet);
 
 alter table DetalleCarnet add constraint FK_DETALLE_CARNET_CARNET
 foreign key (carnet_id) references Carnet;
+
+CREATE TABLE TipoRequerimiento
+(
+idTipReq int IDENTITY(1,1) NOT NULL,
+descripcion varchar(20) NULL
+)
+
+alter table TipoRequerimiento add constraint PK_TIPO_REQUERIMIENTO
+primary key (idTipReq);
+
+CREATE TABLE HistorialRequerimiento
+(
+idHistReq int IDENTITY(1,1) NOT NULL,
+tipreq_id int NOT NULL,
+prestamo_id int NOT NULL,
+detallelibro_id int NOT NULL,
+espaciolecturadetalle_id int NOT NULL,
+fecha_creacion datetime NULL,
+fecha_ultima_actualizacion datetime NULL
+)
+
+alter table HistorialRequerimiento add constraint PK_HISTORIAL_REQUERIMIENTO
+primary key (idHistReq);
+
+alter table HistorialRequerimiento add constraint FK_HISTORIAL_REQUERIMIENTO_TIP_REQ
+foreign key (tipreq_id) references TipoRequerimiento;
+
+alter table HistorialRequerimiento add constraint FK_HISTORIAL_REQUERIMIENTO_PRESTAMO
+foreign key (prestamo_id) references Prestamo;
+
+alter table HistorialRequerimiento add constraint FK_HISTORIAL_REQUERIMIENTO_DETALLE_LIBRO
+foreign key (detallelibro_id) references DetalleLibro;
+
+alter table HistorialRequerimiento add constraint FK_HISTORIAL_REQUERIMIENTO_ESPACIO_LECTURA_DETALLE
+foreign key (espaciolecturadetalle_id) references EspacioLecturaDetalle;
