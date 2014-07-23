@@ -176,6 +176,7 @@ foreign key (libro_id) references Libro;
 CREATE TABLE NivelDemandaLibro
 (
 idNivelDemandaLibro int IDENTITY(1,1) NOT NULL,
+libro_id int NOT NULL,
 nivel_demanda char(1) NULL,
 cantidad_veces int NULL,
 fecha_creacion datetime NULL,
@@ -184,6 +185,9 @@ fecha_ultima_actualizacion datetime NULL
 
 alter table NivelDemandaLibro add constraint PK_NIVEL_DEMANDA_LIBRO
 primary key (idNivelDemandaLibro);
+
+alter table NivelDemandaLibro add constraint FK_NIVEL_DEMANDA_LIBRO_LIBRO
+foreign key (libro_id) references Libro;
 
 -- [Tarea]
 -- 1
