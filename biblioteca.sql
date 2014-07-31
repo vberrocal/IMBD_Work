@@ -213,10 +213,12 @@ foreign key (idCarnetUsuario) references Usuario;
 CREATE TABLE Prestamo
 (
 idPrestamo int IDENTITY(1,1) NOT NULL,
-fecha_prestamo date NOT NULL,
-fecha_devolucion date NOT NULL,
-devuelto bit NOT NULL,
-cantidad_libros int NOT NULL,
+fecha_prestamo date NULL,
+fecha_devolucion date NULL,
+devuelto bit NULL,
+fuera_fecha bit NULL,
+fecha_real_usuario datetime NULL,
+cantidad_libros int NULL,
 observacion varchar(100) NULL,
 fecha_creacion datetime NULL,
 fecha_ultima_actualizacion datetime NULL
