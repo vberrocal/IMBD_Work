@@ -242,7 +242,7 @@ idCarnet int NOT NULL
 )
 
 alter table PrestamoLibro add constraint PK_PRESTAMO_LIBRO
-primary key (idPrestamo,idLibro,idCarnetUsuario);
+primary key (idPrestamo,idLibro,idCarnet);
 
 alter table PrestamoLibro add constraint FK_PRESTAMO_LIBRO_PRESTAMO
 foreign key (idPrestamo) references Prestamo;
@@ -251,7 +251,7 @@ alter table PrestamoLibro add constraint FK_PRESTAMO_LIBRO_LIBRO
 foreign key (idLibro) references Libro;
 
 alter table PrestamoLibro add constraint FK_PRESTAMO_LIBRO_CARNET
-foreign key (idCarnetUsuario) references Carnet;
+foreign key (idCarnet) references Carnet;
 
 CREATE TABLE EspacioLectura
 (
@@ -284,7 +284,7 @@ alter table PrestamoEspacioLectura add constraint FK_PRESTAMO_ESPACIO_LECTURA_ES
 foreign key (idEspacioLectura) references EspacioLectura;
 
 alter table PrestamoEspacioLectura add constraint FK_ESPACIO_LECTURA_CARNET
-foreign key (idCarnetUsuario) references Carnet;
+foreign key (idCarnet) references Carnet;
 
 
 CREATE TABLE TipoRequerimiento
@@ -376,7 +376,7 @@ GO
 CREATE TRIGGER InsertarFechaModificacion_PrestamoEspacioLectura
 ON PrestamoEspacioLectura
 AFTER UPDATE AS
-IF (UPDATE(idEspacioLectura) or UPDATE(idCarnetUsuario) or UPDATE(disponible)
+IF (UPDATE(idEspacioLectura) or UPDATE(idCarnet) or UPDATE(disponible)
  or UPDATE(fecha) or UPDATE(hora_inicio) or UPDATE(hora_fin))
 BEGIN
 SET NOCOUNT ON;
