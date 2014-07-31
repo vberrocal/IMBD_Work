@@ -238,7 +238,7 @@ CREATE TABLE PrestamoLibro
 (
 idPrestamo int NOT NULL,
 idLibro int NOT NULL,
-idCarnetUsuario int NOT NULL
+idCarnet int NOT NULL
 )
 
 alter table PrestamoLibro add constraint PK_PRESTAMO_LIBRO
@@ -268,7 +268,7 @@ CREATE TABLE PrestamoEspacioLectura
 (
 idPrestEspLectura int IDENTITY(1,1) NOT NULL,
 idEspacioLectura varchar(10) NOT NULL,
-idCarnetUsuario int NOT NULL,
+idCarnet int NOT NULL,
 disponible bit NULL,
 fecha datetime NULL,
 hora_inicio datetime NULL,
