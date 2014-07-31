@@ -147,7 +147,9 @@ idUsuario int NOT NULL,
 idTipoUsuario int NOT NULL,
 usuario varchar(45) NOT NULL,
 clave varchar(45) NOT NULL,
-nombre_completo varchar(100) NULL,
+appPaterno varchar(50) NULL,
+appMaterno varchar(50) NULL,
+nombres varchar(50) NULL,
 foto varchar(100) NULL
 );
 
@@ -201,17 +203,19 @@ foreign key (idInstituto) references Instituto;
 -- Agregar el check respectivo
 CREATE TABLE Carnet
 (
-idCarnetUsuario int NOT NULL,
+idCarnet int NOT NULL
+idUsuario int NOT NULL,
 estado char(1) NOT NULL,
-bloquear bit NOT NULL, -- si no es esta Habilitado
-observacion varchar(100) NULL
+observacion varchar(100) NULL,
+perdido bit NULL,
+fecha_fin datetime NULL
 );
 
 alter table Carnet add constraint PK_CARNET
-primary key (idCarnetUsuario);
+primary key (idCarnet);
 
 alter table Carnet add constraint FK_CARNET_USUARIO
-foreign key (idCarnetUsuario) references Usuario;
+foreign key (idUsuario) references Usuario;
 
 CREATE TABLE Prestamo
 (
