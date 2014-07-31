@@ -63,9 +63,7 @@ foreign key (idEditorial) references Editorial;
 CREATE TABLE AutorLibro
 (
 idAutor int NOT NULL,
-idLibro int NOT NULL,
-fecha_creacion datetime NULL,
-fecha_ultima_actualizacion datetime NULL
+idLibro int NOT NULL
 );
 
 alter table AutorLibro add constraint PK_AUTOR_LIBRO
@@ -121,9 +119,7 @@ primary key (idDistribuidor);
 CREATE TABLE DistribuidorLibro
 (
 idDistribuidor int NOT NULL,
-idLibro int NOT NULL,
-fecha_creacion datetime NULL,
-fecha_ultima_actualizacion datetime NULL
+idLibro int NOT NULL
 );
 
 alter table DistribuidorLibro add constraint PK_DISTRIBUIDOR_LIBRO
@@ -205,9 +201,7 @@ CREATE TABLE Carnet
 idCarnetUsuario int NOT NULL,
 estado char(1) NOT NULL,
 bloquear bit NOT NULL, -- si no es esta Habilitado
-observacion varchar(100) NULL,
-fecha_creacion datetime NULL,
-fecha_ultima_actualizacion datetime NULL
+observacion varchar(100) NULL
 );
 
 alter table Carnet add constraint PK_CARNET
