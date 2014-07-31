@@ -187,6 +187,9 @@ idInstituto int NOT NULL
 alter table CentroEstudioUsuario add constraint PK_CENTRO_ESTUDIO_USUARIO
 primary key (idCentroEstudioUsuario);
 
+alter table CentroEstudioUsuario add constraint FK_CENTRO_ESTUDIO_USUARIO
+foreign key (idCentroEstudioUsuario) references Usuario;
+
 alter table CentroEstudioUsuario add constraint FK_CENTRO_ESTUDIO_UNIVERSIDAD
 foreign key (idUniversidad) references Universidad;
 
