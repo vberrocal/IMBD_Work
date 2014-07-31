@@ -230,7 +230,7 @@ primary key (idPrestamo);
 
 CREATE TABLE PrestamoLibro
 (
-idPrestamo int NOT NULL,
+idPrestamo int IDENTITY(1,1) NOT NULL,
 idLibro int NOT NULL,
 idCarnetUsuario int NOT NULL,
 fecha_creacion datetime NULL,
