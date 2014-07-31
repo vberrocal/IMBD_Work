@@ -147,7 +147,7 @@ primary key (idTipoUsuario);
 
 CREATE TABLE Usuario
 (
-idUsuario int IDENTITY(1,1) NOT NULL,
+idUsuario int NOT NULL,
 idTipoUsuario int NOT NULL,
 usuario varchar(45) NOT NULL,
 clave varchar(45) NOT NULL,
