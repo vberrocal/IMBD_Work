@@ -346,7 +346,8 @@ GO
 CREATE TRIGGER InsertarFechaModificacion_Prestamo
 ON Prestamo
 AFTER UPDATE AS
-IF (UPDATE(idLibro) or UPDATE(idCarnetUsuario))
+IF (UPDATE(fecha_devolucion) or UPDATE(devuelto) or UPDATE(observacion) or UPDATE(fecha_prestamo)
+or UPDATE(cantidad_libros))
 BEGIN
 SET NOCOUNT ON;
 update Prestamo set fecha_ultima_actualizacion = GETDATE() where idPrestamo = @@IDENTITY
