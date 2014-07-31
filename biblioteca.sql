@@ -216,7 +216,10 @@ idPrestamo int IDENTITY(1,1) NOT NULL,
 fecha_prestamo date NOT NULL,
 fecha_devolucion date NOT NULL,
 devuelto bit NOT NULL,
+cantidad_libros int NOT NULL,
 observacion varchar(100) NULL,
+fecha_creacion datetime NULL,
+fecha_ultima_actualizacion datetime NULL
 );
 
 alter table Prestamo add constraint PK_PRESTAMO
@@ -224,11 +227,9 @@ primary key (idPrestamo);
 
 CREATE TABLE PrestamoLibro
 (
-idPrestamo int IDENTITY(1,1) NOT NULL,
+idPrestamo int NOT NULL,
 idLibro int NOT NULL,
-idCarnetUsuario int NOT NULL,
-fecha_creacion datetime NULL,
-fecha_ultima_actualizacion datetime NULL
+idCarnetUsuario int NOT NULL
 )
 
 alter table PrestamoLibro add constraint PK_PRESTAMO_LIBRO
@@ -332,23 +333,23 @@ update NivelDemandaLibro set fecha_ultima_actualizacion = GETDATE() where idNive
 END
 GO
 
--- triggers de insert y update para la tabla PrestamoLibro
-CREATE TRIGGER InsertarFechaRegistro_PrestamoLibro
-ON PrestamoLibro
+-- triggers de insert y update para la tabla Prestamo
+CREATE TRIGGER InsertarFechaRegistro_Prestamo
+ON Prestamo
 AFTER INSERT AS
 BEGIN
 SET NOCOUNT ON;
-update PrestamoLibro set fecha_creacion = GETDATE() where idPrestamo = @@IDENTITY
+update Prestamo set fecha_creacion = GETDATE() where idPrestamo = @@IDENTITY
 END
 GO
 
-CREATE TRIGGER InsertarFechaModificacion_PrestamoLibro
-ON PrestamoLibro
+CREATE TRIGGER InsertarFechaModificacion_Prestamo
+ON Prestamo
 AFTER UPDATE AS
 IF (UPDATE(idLibro) or UPDATE(idCarnetUsuario))
 BEGIN
 SET NOCOUNT ON;
-update PrestamoLibro set fecha_ultima_actualizacion = GETDATE() where idPrestamo = @@IDENTITY
+update Prestamo set fecha_ultima_actualizacion = GETDATE() where idPrestamo = @@IDENTITY
 END
 GO
 
