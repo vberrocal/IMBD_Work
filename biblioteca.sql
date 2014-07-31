@@ -203,7 +203,7 @@ foreign key (idInstituto) references Instituto;
 -- Agregar el check respectivo
 CREATE TABLE Carnet
 (
-idCarnet int NOT NULL
+idCarnet int NOT NULL,
 idUsuario int NOT NULL,
 estado char(1) NOT NULL,
 observacion varchar(100) NULL,
@@ -321,88 +321,3 @@ foreign key (idLibro) references Libro;
 
 alter table HistorialRequerimiento add constraint FK_HISTORIAL_REQUERIMIENTO_PRESTAMO_ESPACIO_LECTURA
 foreign key (idPrestEspLectura) references PrestamoEspacioLectura;
-
--- triggers de insert y update para la tabla InsertarFechaRegistro
-CREATE TRIGGER InsertarFechaRegistro_NivelDemandaLibro
-ON NivelDemandaLibro
-AFTER INSERT AS
-BEGIN
-SET NOCOUNT ON;
-update NivelDemandaLibro set fecha_creacion = GETDATE() where idNivelDemandaLibro = @@IDENTITY
-END
-GO
-
-CREATE TRIGGER InsertarFechaModificacion_NivelDemandaLibro
-ON NivelDemandaLibro
-AFTER UPDATE AS
-IF (UPDATE(idLibro) or UPDATE(idTipoDemanda) or UPDATE(cantidad_veces))
-BEGIN
-SET NOCOUNT ON;
-update NivelDemandaLibro set fecha_ultima_actualizacion = GETDATE() where idNivelDemandaLibro = @@IDENTITY
-END
-GO
-
--- triggers de insert y update para la tabla Prestamo
-CREATE TRIGGER InsertarFechaRegistro_Prestamo
-ON Prestamo
-AFTER INSERT AS
-BEGIN
-SET NOCOUNT ON;
-update Prestamo set fecha_creacion = GETDATE() where idPrestamo = @@IDENTITY
-END
-GO
-
-CREATE TRIGGER InsertarFechaModificacion_Prestamo
-ON Prestamo
-AFTER UPDATE AS
-IF (UPDATE(fecha_devolucion) or UPDATE(devuelto) or UPDATE(observacion) or UPDATE(fecha_prestamo)
-or UPDATE(cantidad_libros))
-BEGIN
-SET NOCOUNT ON;
-update Prestamo set fecha_ultima_actualizacion = GETDATE() where idPrestamo = @@IDENTITY
-END
-GO
-
--- triggers de insert y update para la tabla PrestamoEspacioLectura
-CREATE TRIGGER InsertarFechaRegistro_PrestamoEspacioLectura
-ON PrestamoEspacioLectura
-AFTER INSERT AS
-BEGIN
-SET NOCOUNT ON;
-update PrestamoEspacioLectura set fecha_creacion = GETDATE() where idPrestEspLectura = @@IDENTITY
-END
-GO
-
-CREATE TRIGGER InsertarFechaModificacion_PrestamoEspacioLectura
-ON PrestamoEspacioLectura
-AFTER UPDATE AS
-IF (UPDATE(idEspacioLectura) or UPDATE(idCarnet) or UPDATE(disponible)
- or UPDATE(fecha) or UPDATE(hora_inicio) or UPDATE(hora_fin))
-BEGIN
-SET NOCOUNT ON;
-update PrestamoEspacioLectura set fecha_ultima_actualizacion = GETDATE() where idPrestEspLectura = @@IDENTITY
-END
-GO
-
--- triggers de insert y update para la tabla HistorialRequerimiento
-CREATE TRIGGER InsertarFechaRegistro_HistorialRequerimiento
-ON HistorialRequerimiento
-AFTER INSERT AS
-BEGIN
-SET NOCOUNT ON;
-update HistorialRequerimiento set fecha_creacion = GETDATE() where idHistReq = @@IDENTITY
-END
-GO
-
-CREATE TRIGGER InsertarFechaModificacion_HistorialRequerimiento
-ON HistorialRequerimiento
-AFTER UPDATE AS
-IF (UPDATE(idTipReq) or UPDATE(idPrestamo) or UPDATE(idLibro) or UPDATE(idPrestEspLectura))
-BEGIN
-SET NOCOUNT ON;
-update HistorialRequerimiento set fecha_ultima_actualizacion = GETDATE() where idHistReq = @@IDENTITY
-END
-GO
-
-
-
