@@ -23,8 +23,8 @@ primary key (idAutor);
 CREATE TABLE Editorial
 (
 idEditorial int IDENTITY(1,1) NOT NULL,
-ruc varchar(10) NOT NULL,
-nombre varchar(50) NOT NULL,
+nombre varchar(100) NOT NULL,
+representante varchar(100) NULL,
 direccion varchar(100) NULL,
 telefono varchar(20) NULL
 );
