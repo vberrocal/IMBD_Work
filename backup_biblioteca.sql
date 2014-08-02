@@ -40,3 +40,30 @@ insert into Editorial values
 ('PEARSON EDUCACIÓN DEL PERÚ S.A.C.','Sr. Eduardo Guzmán Barro','Av. Javier Prado Este 4491. Surco.','4372010 / 4372015'),
 ('SANTILLANA S.A.','Sr. Javier Laría Quincoces','Av. Primavera 2160. Surco.','3134000'),
 ('SPECIAL BOOKS SERVICES S.A.','Sra. PaulaTapia Álvarez Gerente ','Av. Angamos Oeste 301. Miraflores.','206-4900');
+
+
+insert into Universidad values
+('Universidad Nacional del Callao (UNAC)','Av. Juan Pablo II 306, Bellavista - Callao'),
+('Universidad Nacional Mayor de San Marcos (UNMSM)','Av. Universitaria /Av. Germán Amézaga s/n. Edificio Jorge Basadre Ciudad Universitaria'),
+('Universidad Nacional Agraria La Molina','Av. La Molina'),
+('Univ. Nac. de Educación Enrique Guzmán y Valle (UNE)','Av. Enrique Guzmán y Valle s/n, La Cantuta - Chosica'),
+('Universidad Nacional de Ingeniería - UNI','Av. Túpac Amaru 210 - Rimac '),
+('Universidad Privada San Juan Bautista (UPSJB)','Av. Jose Antonio Lavalle s/n Hacienda Villa - Chorrillos'),
+('Universidad Inca Garcilaso de la Vega (UIGV)',' Av. San Felipe 890, Jesús María'),
+('Universidad Peruana de las Américas','Av. Garcilaso de la Vega Nº 1880'),
+('Universidad Tecnológica del Perú (UTP)','Esquina Av. 28 de Julio y Av. Petit Thouars'),
+('Universidad del Pacífico (UP)','Av. Salaverry 2020 Jesús María'),
+('Universidad San Ignacio de Loyola (USIL)','Av. La Fontana 550, La Molina'),
+('Universidad Femenina del Sagrado Corazón (UNIFE)','Av. Los Frutales 954 Urb. Santa Magdalena Sofía, La Molina'),
+('Universidad Peruana de Ciencias Aplicadas (UPC)','Prolongación Primavera 2390, Monterrico'),
+('Universidad de Lima (ULIMA)','Av. Javier Prado Este s/n, Monterrico'),
+('Universidad de San Martín de Porres (USMP)','Ciudad Universitaria Av. Las Calandrias s/n Santa Anita'),
+('Pontificia Universidad Católica del Perú (PUCP)','Av. Universitaria 1801, San Miguel'),
+('Universidad Peruana Cayetano Heredia (UPCH)','Av. Honorio Delgado 430, Urb. Ingeniería, S.M.P.'),
+('Universidad de Piura - PAD',' Aldebarán 160, Surco'),
+('Universidad Científica del Sur (UCSUR)','Cantuarias 385, Miraflores '),
+('Universidad Privada del Norte (UPNORTE)','Av. Del Ejército 920 - Urb. El Molino'),
+('Universidad Católica Sedes Sapientiae (UCSS)','Esquina Constelaciones y Sol de Oro S/N Urbanización Sol de Oro. Los Olivos'),
+('Universidad Cesar Vallejo (UCV)','AV. Alfredo Mendiola 6232 - Panamericana Norte, Los Olivos'),
+('Universidad Alas Peruanas (UAP)','Av. San Felipe 1109. Jesús Maria');
+
