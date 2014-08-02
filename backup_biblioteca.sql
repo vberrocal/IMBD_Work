@@ -1,5 +1,10 @@
 --script
 
+insert into TipoDemanda values
+('N1','Nivel 1'),
+('N2','Nivel 2'),
+('N3','Nivel 3');
+
 insert into TipoUsuario values
 ('ADMINISTRADOR'),
 ('ESTUDIANTE');
