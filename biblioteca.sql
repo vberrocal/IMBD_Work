@@ -32,19 +32,19 @@ telefono varchar(20) NULL
 alter table Editorial add constraint PK_EDITORIAL
 primary key (idEditorial);
 
-CREATE TABLE Genero
+CREATE TABLE Categoria
 (
-idGenero int IDENTITY(1,1) NOT NULL,
+idCategoria int IDENTITY(1,1) NOT NULL,
 descripcion varchar(50) NOT NULL
 );
 
-alter table Genero add constraint PK_GENERO
-primary key (idGenero);
+alter table Categoria add constraint PK_CATEGORIA
+primary key (idCategoria);
 
 CREATE TABLE Libro
 (
 idLibro int identity(1,1) NOT NULL,
-idGenero int NOT NULL,
+idCategoria int NOT NULL,
 idEditorial int NOT NULL,
 titulo varchar(50) NOT NULL,
 cantidad_paginas int NULL,
@@ -54,8 +54,8 @@ idioma varchar(50) NOT NULL
 alter table Libro add constraint PK_LIBRO
 primary key (idLibro);
 
-alter table Libro add constraint FK_GENERO
-foreign key (idGenero) references Genero;
+alter table Libro add constraint FK_CATEGORIA
+foreign key (idCategoria) references Categoria;
 
 alter table Libro add constraint FK_EDITORIAL
 foreign key (idEditorial) references Editorial;
