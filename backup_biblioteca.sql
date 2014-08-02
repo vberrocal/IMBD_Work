@@ -1,5 +1,21 @@
 --script
 
+insert into Categoria values
+('NOVELA'),
+('COMICS'),
+('DESARROLLO WEB'),
+('EDUCACION'),
+('INFORMATICA'),
+('MATEMATICAS'),
+('FILOSOFIA'),
+('GEOGRAFIA / TURISMO'),
+('IDIOMAS'),
+('MARKETING / BUSINESS'),
+('MULTIMEDIA'),
+('REVISTAS'),
+('LENGUAJE'),
+('HISTORIA');
+
 insert into Editorial values
 ('ASOCIACIÓN EDITORIAL BRUÑO','Sr. Augusto Federico Díaz Tineo','Av. Arica 751. Breña', '4244134 / 4237890'),
 ('CENTAURO EDICIONES S.A.C.','Sr. Óscar Gustavo Zevallos García','Jr. Luis Varela y Orbegoso 565.', '4440900'),
