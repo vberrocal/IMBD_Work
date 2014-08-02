@@ -87,4 +87,8 @@ insert into Instituto values
 ('Computronic','Av. Uruguay 360 – Cercado de Lima '),
 ('Columbia','Av. Paseo de la República 2232 Via Expresa- Lince');
 
-
+insert into Distribuidor values
+('20112949101','Libun','Avenida Petit Thouars, 4799 MIRAFLORES ','446 5048'),
+('20100472342','Librería Minerva','Avenida Angamos Este, 2593 SAN BORJA','475 5510'),
+('20100845789','Librería Pizarro','Avenida Ignacio Merino, 2330 LINCE','422 6420'),
+('20108945689','Grandes Libros','Calle Casagrande, 157 SANTIAGO DE SURCO','387 5520');
