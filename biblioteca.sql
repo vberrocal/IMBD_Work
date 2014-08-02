@@ -162,8 +162,8 @@ foreign key (idTipoUsuario) references TipoUsuario;
 CREATE TABLE Universidad
 (
 idUniversidad int IDENTITY(1,1) NOT NULL,
-nombre varchar(50) NOT NULL,
-direccion varchar(50) NULL
+nombre varchar(200) NOT NULL,
+direccion varchar(200) NULL
 )
 
 alter table Universidad add constraint PK_UNIVERSIDAD
@@ -172,8 +172,8 @@ primary key (idUniversidad);
 CREATE TABLE Instituto
 (
 idInstituto int IDENTITY(1,1) NOT NULL,
-nombre varchar(50) NOT NULL,
-direccion varchar(50) NULL
+nombre varchar(200) NOT NULL,
+direccion varchar(200) NULL
 )
 
 alter table Instituto add constraint PK_INSTITUTO
