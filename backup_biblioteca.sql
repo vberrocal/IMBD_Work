@@ -67,3 +67,24 @@ insert into Universidad values
 ('Universidad Cesar Vallejo (UCV)','AV. Alfredo Mendiola 6232 - Panamericana Norte, Los Olivos'),
 ('Universidad Alas Peruanas (UAP)','Av. San Felipe 1109. Jesús Maria');
 
+insert into Instituto values
+('Toulouse Lautrec','Av. Primavera 970 Chacarilla Surco'),
+('Tecsup','Av. Cascanueces 2221 Santa Anita'),
+('Sencico','Av. De la Poesía 351- San Borja'),
+('Senati','Av. Alfredo Mendiola # 3520 Independencia'),
+('ISIL','Av. La Fontana 795'),
+('CIMAS','Avenida Garcilaso de la Vega, Lima 15001'),
+('SISE','Av. Larco 756 - Miraflores'),
+('IPP','Av Jorge Basadre, Lima'),
+('IPM','Vía Expresa Paseo de la República 6099'),
+('IPAD','Av. Benavides 715 Miraflores'),
+('Instituto Metropolitano','Av. Arequipa 694 (Frente al Parque de las Aguas)'),
+('Iberotec','Av. Arenales 1555, Lince'),
+('IFB','Av. Santiago de Surco 4717 Surco'),
+('Cibertec','Psje. Tello 285 cruce con Av. Diez Canseco'),
+('ADEX','Av Javier Prado Este 2875'),
+('I.E.S.T.P “Daniel Alcides Carrión”','Jr. Saco Oliveros 150 / Av. Arequipa'),
+('Computronic','Av. Uruguay 360 – Cercado de Lima '),
+('Columbia','Av. Paseo de la República 2232 Via Expresa- Lince');
+
+
