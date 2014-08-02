@@ -92,3 +92,14 @@ insert into Distribuidor values
 ('20100472342','Librería Minerva','Avenida Angamos Este, 2593 SAN BORJA','475 5510'),
 ('20100845789','Librería Pizarro','Avenida Ignacio Merino, 2330 LINCE','422 6420'),
 ('20108945689','Grandes Libros','Calle Casagrande, 157 SANTIAGO DE SURCO','387 5520');
+
+insert into EspacioLectura values
+('E001',5,1,'-'),
+('E002',5,1,'-'),
+('E003',5,1,'-'),
+('E004',5,1,'-'),
+('E005',5,1,'-'),
+('E006',5,1,'-'),
+('E007',5,1,'-');
+
+
