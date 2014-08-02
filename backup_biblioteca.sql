@@ -102,4 +102,15 @@ insert into EspacioLectura values
 ('E006',5,1,'-'),
 ('E007',5,1,'-');
 
-
+insert into Usuario values
+(1,'ssuarez','ssuarez','SOTO','SUAREZ','MARGARITA','-'),
+(2,'aslvador','aslvador','ARCOS','ALVARES','ABDIEL SALVADOR','-'),
+(2,'cjuan','cjuan','CAMACHO','CORDERO','JUAN RAMON','-'),
+(2,'mgomez','mgomez','GOMEZ','MARQUEZ','FRANCISCO ISAAC','-'),
+(2,'ocastillo','ocastillo','OCHOA','CASTILLO','ORLANDO','-'),
+(2,'rhinojosa','rhinojosa','RAMIREZ','HINOJOSA','ALFREDO','-'),
+(2,'lbonilla','lbonilla','LEYVA','BONILLA','JUAN FRANCISCO','-'),
+(2,'belias','belias','BASULTO','ELIAS','GUILLERMO','-'),
+(2,'rtoscano','rtoscano','RUIZ','TOSCANO','CRISTOS ALBERTO','-'),
+(2,'trivera','trivera','TRUJILLO','RIVERA','EDUARDO ANTONIO','-'),
+(2,'paguilar','paguilar','PERALES','AGUILAR','RAQUEL DEL CARMEN','-');
