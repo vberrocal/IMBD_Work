@@ -108,8 +108,8 @@ CREATE TABLE Distribuidor
 (
 idDistribuidor int IDENTITY(1,1) NOT NULL,
 ruc varchar(10) NOT NULL,
-nombre varchar(50) NOT NULL,
-direccion varchar(100) NULL,
+nombre varchar(200) NOT NULL,
+direccion varchar(200) NULL,
 telefono varchar(20) NULL
 );
 
