@@ -77,8 +77,8 @@ foreign key (idLibro) references Libro;
 
 CREATE TABLE TipoDemanda
 (
-idTipoDemanda char(1) NOT NULL,
-descripcion varchar(50) NOT NULL
+idTipoDemanda char(2) NOT NULL,
+descripcion varchar(50) NULL
 );
 
 alter table TipoDemanda add constraint PK_TIPO_DEMANDA
