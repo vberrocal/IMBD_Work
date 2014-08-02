@@ -256,9 +256,10 @@ foreign key (idCarnet) references Carnet;
 CREATE TABLE EspacioLectura
 (
 idEspacioLectura varchar(10) NOT NULL,
-capacidad char(1) NULL,
+codigo char(4) NOT NULL,
+capacidad int NULL,
 estado bit NULL, -- activo o no, es decir, si no esta en repación
-observacion varchar(100) NULL
+observacion nvarchar(255) NULL
 )
 
 alter table EspacioLectura add constraint PK_ESPACIO_LECTURA
