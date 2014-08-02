@@ -1,5 +1,9 @@
 --script
 
+insert into TipoUsuario values
+('ADMINISTRADOR'),
+('ESTUDIANTE');
+
 insert into Categoria values
 ('NOVELA'),
 ('COMICS'),
