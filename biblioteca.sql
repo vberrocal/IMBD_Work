@@ -255,8 +255,7 @@ foreign key (idCarnet) references Carnet;
 
 CREATE TABLE EspacioLectura
 (
-idEspacioLectura varchar(10) NOT NULL,
-codigo char(4) NOT NULL,
+idEspacioLectura nchar(4) NOT NULL,
 capacidad int NULL,
 estado bit NULL, -- activo o no, es decir, si no esta en repación
 observacion nvarchar(255) NULL
