@@ -217,6 +217,9 @@ primary key (idCarnet);
 alter table Carnet add constraint FK_CARNET_USUARIO
 foreign key (idUsuario) references Usuario;
 
+alter table Carnet add constraint CK_Estado
+CHECK (estado = 'H' or estado = 'R' or estado = 'S' or estado = 'P'); 
+
 CREATE TABLE Prestamo
 (
 idPrestamo int IDENTITY(1,1) NOT NULL,
