@@ -141,3 +141,21 @@ insert into Autor values
 ('Mejía','Gómez','Diana',null,null,2),
 ('Ramirez','Prieto','Ignacio',null,null,3);
 
+
+INSERT INTO Libro VALUES
+(6,1,'Matemática Primer Grado',88,'Español'),
+(9,3,'Aprendiendo Inglés',50,'Ingles-Español'),
+(4,11,'La vida de Jesús',100,'Español'),
+(6,1,'Funciones lineales',150,'Español'),
+(5,5,'Mantenimiento de PC',120,'Español'),
+(6,3,'Calculo II',400,'Español'),
+(1,5,'¿Quién se ha llevado mi queso?',70,'Español'),
+(5,8,'La computadora y sus partes',200,'Español'),
+(1,5,'Oraciones al señor',60,'Español'),
+(4,10,'Tecnicas de Estudio',100,'Español'),
+(1,5,'El Delfin',34,'Español'),
+(5,5,'Desarrollo Web',67,'Español'),
+(1,1,'EPE',35,'Español'),
+(5,5,'Desarrollo Movil',300,'Español'),
+(5,5,'Reparacion de Celulares',265,'Español'),
+(1,8,'Casos de la vida',350,'Español');
