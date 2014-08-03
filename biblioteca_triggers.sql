@@ -2,9 +2,17 @@
 CREATE TRIGGER InsertarFechaRegistro_NivelDemandaLibro
 ON NivelDemandaLibro
 AFTER INSERT AS
+IF @@ROWCOUNT = 1
 BEGIN
 SET NOCOUNT ON;
-update NivelDemandaLibro set fecha_creacion = GETDATE() where idNivelDemandaLibro = @@IDENTITY
+update NivelDemandaLibro set fecha_creacion = GETDATE() 
+where idNivelDemandaLibro = @@IDENTITY	
+END
+ELSE
+BEGIN
+SET NOCOUNT ON;
+update NivelDemandaLibro set fecha_creacion = GETDATE() 
+where idNivelDemandaLibro in (SELECT idNivelDemandaLibro FROM NivelDemandaLibro);
 END
 GO
 
@@ -22,9 +30,16 @@ GO
 CREATE TRIGGER InsertarFechaRegistro_Prestamo
 ON Prestamo
 AFTER INSERT AS
+IF @@ROWCOUNT = 1
 BEGIN
 SET NOCOUNT ON;
 update Prestamo set fecha_creacion = GETDATE() where idPrestamo = @@IDENTITY
+END
+ELSE
+BEGIN
+SET NOCOUNT ON;
+update Prestamo set fecha_creacion = GETDATE() 
+where idPrestamo in (SELECT idPrestamo FROM Prestamo)
 END
 GO
 
@@ -43,11 +58,17 @@ GO
 CREATE TRIGGER InsertarFechaRegistro_PrestamoEspacioLectura
 ON PrestamoEspacioLectura
 AFTER INSERT AS
+IF @@ROWCOUNT = 1
 BEGIN
 SET NOCOUNT ON;
 update PrestamoEspacioLectura set fecha_creacion = GETDATE() where idPrestEspLectura = @@IDENTITY
 END
-GO
+ELSE
+BEGIN
+SET NOCOUNT ON;
+update PrestamoEspacioLectura set fecha_creacion = GETDATE() 
+where idPrestEspLectura in (SELECT idPrestEspLectura FROM PrestamoEspacioLectura)
+END
 
 CREATE TRIGGER InsertarFechaModificacion_PrestamoEspacioLectura
 ON PrestamoEspacioLectura
@@ -64,9 +85,16 @@ GO
 CREATE TRIGGER InsertarFechaRegistro_HistorialRequerimiento
 ON HistorialRequerimiento
 AFTER INSERT AS
+IF @@ROWCOUNT = 1
 BEGIN
 SET NOCOUNT ON;
 update HistorialRequerimiento set fecha_creacion = GETDATE() where idHistReq = @@IDENTITY
+END
+ELSE
+BEGIN
+SET NOCOUNT ON;
+update HistorialRequerimiento set fecha_creacion = GETDATE() 
+where idHistReq in (SELECT idHistReq FROM HistorialRequerimiento)
 END
 GO
 
