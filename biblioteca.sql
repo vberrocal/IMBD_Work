@@ -20,6 +20,10 @@ cantidad_libro int NULL
 alter table Autor add constraint PK_AUTOR
 primary key (idAutor);
 
+alter table Autor add constraint CK_A_Apellido_Paterno CHECK(appPaterno like'[A-Z]%');
+alter table Autor add constraint CK_A_Apellido_Materno CHECK(appMaterno like'[A-Z]%');
+alter table Autor add constraint CK_A_Nombres CHECK(nombres like'[A-Z]%');
+
 CREATE TABLE Editorial
 (
 idEditorial int IDENTITY(1,1) NOT NULL,
@@ -116,6 +120,8 @@ telefono varchar(20) NULL
 alter table Distribuidor add constraint PK_DISTRIBUIDOR
 primary key (idDistribuidor);
 
+alter table Distribuidor add constraint CK_RUC CHECK(ruc not like'%[^0-9]%');
+
 CREATE TABLE DistribuidorLibro
 (
 idDistribuidor int NOT NULL,
@@ -158,6 +164,10 @@ primary key (idUsuario);
 
 alter table Usuario add constraint FK_TIPO_USUARIO
 foreign key (idTipoUsuario) references TipoUsuario;
+
+alter table Usuario add constraint CK_U_Apellido_Paterno CHECK(appPaterno like'[A-Z]%');
+alter table Usuario add constraint CK_U_Apellido_Materno CHECK(appMaterno like'[A-Z]%');
+alter table Usuario add constraint CK_U_Nombres CHECK(nombres like'[A-Z]%');
 
 CREATE TABLE Universidad
 (
