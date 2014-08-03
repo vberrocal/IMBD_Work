@@ -81,7 +81,7 @@ foreign key (idLibro) references Libro;
 
 CREATE TABLE TipoDemanda
 (
-idTipoDemanda char(2) NOT NULL,
+idTipoDemanda varchar(10) NOT NULL,
 descripcion varchar(50) NULL
 );
 
@@ -93,7 +93,7 @@ CREATE TABLE NivelDemandaLibro
 (
 idNivelDemandaLibro int IDENTITY(1,1) NOT NULL,
 idLibro int NOT NULL,
-idTipoDemanda char(2) NULL,
+idTipoDemanda varchar(10) NULL,
 cantidad_veces int NULL, -- es una consulta que hace un trigger
 fecha_creacion datetime NULL,
 fecha_ultima_actualizacion datetime NULL
@@ -268,7 +268,7 @@ foreign key (idCarnet) references Carnet;
 
 CREATE TABLE EspacioLectura
 (
-idEspacioLectura nchar(4) NOT NULL,
+idEspacioLectura varchar(10) NOT NULL,
 capacidad int NULL,
 estado bit NULL, -- activo o no, es decir, si no esta en repación
 observacion nvarchar(255) NULL
@@ -280,7 +280,7 @@ primary key (idEspacioLectura);
 CREATE TABLE PrestamoEspacioLectura
 (
 idPrestEspLectura int IDENTITY(1,1) NOT NULL,
-idEspacioLectura nchar(4) NOT NULL,
+idEspacioLectura varchar(10) NOT NULL,
 idCarnet int NOT NULL,
 disponible bit NULL,
 fecha datetime NULL,
