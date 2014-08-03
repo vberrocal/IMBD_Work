@@ -88,6 +88,9 @@ descripcion varchar(50) NULL
 alter table TipoDemanda add constraint PK_TIPO_DEMANDA
 primary key (idTipoDemanda);
 
+alter table TipoDemanda add constraint CK_TD_ID
+CHECK (LEN(idTipoDemanda) < 3);
+
 -- nivel de demanda cuantitativa A(Alta), M(Media), B(Baja)
 CREATE TABLE NivelDemandaLibro
 (
@@ -276,6 +279,9 @@ observacion nvarchar(255) NULL
 
 alter table EspacioLectura add constraint PK_ESPACIO_LECTURA
 primary key (idEspacioLectura);
+
+alter table EspacioLectura add constraint CK_EL_ID
+CHECK (LEN(idEspacioLectura) < 5);
 
 CREATE TABLE PrestamoEspacioLectura
 (
