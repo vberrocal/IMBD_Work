@@ -114,3 +114,14 @@ insert into Usuario values
 (2,'rtoscano','rtoscano','RUIZ','TOSCANO','CRISTOS ALBERTO','-'),
 (2,'trivera','trivera','TRUJILLO','RIVERA','EDUARDO ANTONIO','-'),
 (2,'paguilar','paguilar','PERALES','AGUILAR','RAQUEL DEL CARMEN','-');
+
+insert into Carnet values
+(100001,2,'H',null,0,null),
+(100002,3,'H',null,0,null),
+(100003,4,'H',null,0,null),
+(100004,5,'H',null,0,null),
+(100005,6,'H',null,0,null),
+(100006,7,'H',null,0,null),
+(100007,8,'H',null,0,null),
+(100008,9,'H',null,0,null),
+(100009,10,'H',null,0,null);
