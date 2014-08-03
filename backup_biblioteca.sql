@@ -125,3 +125,19 @@ insert into Carnet values
 (100007,8,'H',null,0,null),
 (100008,9,'H',null,0,null),
 (100009,10,'H',null,0,null);
+
+insert into Autor values
+('Sabana','Mendoza','Maribel',null,'mary_123@gmail.com',5),
+('Toribio','Fuentes','Orlando',null,null,1),
+('Toro','Campos','Rosa',null,'tora@gmail.com',3),
+('Santiago','Santiago','Alfredo',null,'santi_314@spee.com',2),
+('Cueto','Barreto','César',null,'barreto@gmail.com',3),
+('Espinoza','Ortega','Joaquin',null,null,4),
+('Benavides','Lara','Andrés',null,null,2),
+('Ponce','León','Clara',null,'clara_ponce@gmail.com',4),
+('Camacho','Gutierrez','Valeria',null,null,2),
+('Loayza','Pérez','Esteban',null,null,2),
+('Bayer','Flores','Antonio',null,'anto_77@grupoarg.com',2),
+('Mejía','Gómez','Diana',null,null,2),
+('Ramirez','Prieto','Ignacio',null,null,3);
+
