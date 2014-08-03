@@ -93,7 +93,7 @@ CREATE TABLE NivelDemandaLibro
 (
 idNivelDemandaLibro int IDENTITY(1,1) NOT NULL,
 idLibro int NOT NULL,
-idTipoDemanda char(1) NULL,
+idTipoDemanda char(2) NULL,
 cantidad_veces int NULL, -- es una consulta que hace un trigger
 fecha_creacion datetime NULL,
 fecha_ultima_actualizacion datetime NULL
@@ -280,7 +280,7 @@ primary key (idEspacioLectura);
 CREATE TABLE PrestamoEspacioLectura
 (
 idPrestEspLectura int IDENTITY(1,1) NOT NULL,
-idEspacioLectura varchar(10) NOT NULL,
+idEspacioLectura nchar(4) NOT NULL,
 idCarnet int NOT NULL,
 disponible bit NULL,
 fecha datetime NULL,
