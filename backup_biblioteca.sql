@@ -198,3 +198,33 @@ insert into CentroEstudioUsuario values
 (9,null,10),
 (10,5,null),
 (11,7,null);
+
+insert into AutorLibro values
+(1,1),
+(2,2),
+(3,3),
+(4,4),
+(5,5),
+(6,6),
+(7,7),
+(8,8),
+(9,9),
+(10,10),
+(11,11),
+(12,12),
+(13,13);
+
+insert into DistribuidorLibro values
+(1,1),
+(2,2),
+(3,3),
+(4,4),
+(1,5),
+(2,6),
+(3,7),
+(4,8),
+(1,9),
+(2,10),
+(3,11),
+(4,12),
+(1,13);
