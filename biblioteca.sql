@@ -323,10 +323,10 @@ foreign key (idCarnet) references Carnet;
 CREATE TABLE HistorialRequerimiento
 (
 idHistReq int IDENTITY(1,1) NOT NULL,
-idTipReq int NOT NULL,
-idPrestamo int NOT NULL,
-idLibro int NOT NULL,
-idPrestEspLectura int NOT NULL,
+idTipReq int NULL,
+idPrestamo int NULL,
+idLibro int NULL,
+idPrestEspLectura int NULL,
 fecha_creacion datetime NULL,
 fecha_ultima_actualizacion datetime NULL
 )
