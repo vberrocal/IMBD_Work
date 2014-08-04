@@ -228,3 +228,10 @@ insert into DistribuidorLibro values
 (3,11),
 (4,12),
 (1,13);
+
+insert into TipoRequerimiento values
+('Prestamo Libro'),
+('Prestamo Ipad'),
+('Espacio Lectura'),
+('Salas Grupales'),
+('Prestamo videoteca');
