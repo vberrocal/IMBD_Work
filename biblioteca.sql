@@ -195,8 +195,8 @@ primary key (idInstituto);
 CREATE TABLE CentroEstudioUsuario
 (
 idUsuario int NOT NULL,
-idUniversidad int NOT NULL,
-idInstituto int NOT NULL
+idUniversidad int NULL,
+idInstituto int NULL
 )
 
 alter table CentroEstudioUsuario add constraint PK_CENTRO_ESTUDIO_USUARIO
