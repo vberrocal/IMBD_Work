@@ -234,6 +234,15 @@ foreign key (idUsuario) references Usuario;
 alter table Carnet add constraint CK_Estado
 CHECK (estado = 'H' or estado = 'R' or estado = 'S' or estado = 'P'); 
 
+CREATE TABLE TipoRequerimiento
+(
+idTipReq int IDENTITY(1,1) NOT NULL,
+descripcion varchar(20) NULL
+)
+
+alter table TipoRequerimiento add constraint PK_TIPO_REQUERIMIENTO
+primary key (idTipReq);
+
 CREATE TABLE Prestamo
 (
 idPrestamo int IDENTITY(1,1) NOT NULL,
@@ -254,15 +263,19 @@ primary key (idPrestamo);
 CREATE TABLE PrestamoLibro
 (
 idPrestamo int NOT NULL,
+idTipReq int NOT NULL,
 idLibro int NOT NULL,
 idCarnet int NOT NULL
 )
 
 alter table PrestamoLibro add constraint PK_PRESTAMO_LIBRO
-primary key (idPrestamo,idLibro,idCarnet);
+primary key (idPrestamo,idTipReq,idLibro,idCarnet);
 
 alter table PrestamoLibro add constraint FK_PRESTAMO_LIBRO_PRESTAMO
 foreign key (idPrestamo) references Prestamo;
+
+alter table PrestamoLibro add constraint FK_PRESTAMO_LIBRO_TIPO_REQUERIMIENTO
+foreign key (idTipReq) references TipoRequerimiento;
 
 alter table PrestamoLibro add constraint FK_PRESTAMO_LIBRO_LIBRO
 foreign key (idLibro) references Libro;
@@ -306,15 +319,6 @@ foreign key (idEspacioLectura) references EspacioLectura;
 alter table PrestamoEspacioLectura add constraint FK_ESPACIO_LECTURA_CARNET
 foreign key (idCarnet) references Carnet;
 
-
-CREATE TABLE TipoRequerimiento
-(
-idTipReq int IDENTITY(1,1) NOT NULL,
-descripcion varchar(20) NULL
-)
-
-alter table TipoRequerimiento add constraint PK_TIPO_REQUERIMIENTO
-primary key (idTipReq);
 
 CREATE TABLE HistorialRequerimiento
 (
