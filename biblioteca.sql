@@ -194,13 +194,14 @@ primary key (idInstituto);
 
 CREATE TABLE CentroEstudioUsuario
 (
+idCentroEstudio int IDENTITY(1,1) NOT NULL,
 idUsuario int NOT NULL,
 idUniversidad int NULL,
 idInstituto int NULL
 )
 
 alter table CentroEstudioUsuario add constraint PK_CENTRO_ESTUDIO_USUARIO
-primary key (idUsuario,idUniversidad,idInstituto);
+primary key (idCentroEstudio,idUsuario);
 
 alter table CentroEstudioUsuario add constraint FK_CENTRO_ESTUDIO_USUARIO
 foreign key (idUsuario) references Usuario;
