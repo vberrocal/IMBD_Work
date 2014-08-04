@@ -235,3 +235,17 @@ insert into TipoRequerimiento values
 ('Espacio Lectura'),
 ('Salas Grupales'),
 ('Prestamo videoteca');
+
+INSERT INTO Prestamo(fecha_prestamo,fecha_devolucion,devuelto,fuera_fecha,
+fecha_real_usuario,cantidad_libros,observacion) VALUES 
+('2014-05-03','2014-05-03',0,0,'2014-05-03',1,'El libro se encuentra dentro de la fecha establecida de devolución'),
+('2014-06-04','2014-06-04',0,0,'2014-06-04',1,'El libro se encuentra dentro de la fecha establecida de devolución'),
+('2014-02-05','2014-02-05',0,0,'2014-02-05',1,'El libro se encuentra dentro de la fecha establecida de devolución'),
+('2014-01-06','2014-01-06',0,0,'2014-01-06',1,'El libro se encuentra dentro de la fecha establecida de devolución'),
+('2014-03-07','2014-03-07',0,0,'2014-03-07',1,'El libro se encuentra dentro de la fecha establecida de devolución'),
+('2014-04-07','2014-04-07',0,0,'2014-04-07',1,'El libro se encuentra dentro de la fecha establecida de devolución'),
+('2014-08-01','2014-08-01',0,0,'2014-08-01',1,'El libro se encuentra dentro de la fecha establecida de devolución'),
+('2014-04-02','2014-04-02',0,0,'2014-04-02',1,'El libro se encuentra dentro de la fecha establecida de devolución'),
+('2014-02-03','2014-02-03',0,0,'2014-02-03',1,'El libro se encuentra dentro de la fecha establecida de devolución'),
+('2014-03-04','2014-03-04',0,0,'2014-03-04',1,'El libro se encuentra dentro de la fecha establecida de devolución'),
+('2014-01-05','2014-01-05',0,0,'2014-01-05',1,'El libro se encuentra dentro de la fecha establecida de devolución');
