@@ -249,3 +249,23 @@ fecha_real_usuario,cantidad_libros,observacion) VALUES
 ('2014-02-03','2014-02-03',0,0,'2014-02-03',1,'El libro se encuentra dentro de la fecha establecida de devolución'),
 ('2014-03-04','2014-03-04',0,0,'2014-03-04',1,'El libro se encuentra dentro de la fecha establecida de devolución'),
 ('2014-01-05','2014-01-05',0,0,'2014-01-05',1,'El libro se encuentra dentro de la fecha establecida de devolución');
+
+CREATE TABLE PrestamoLibro
+(
+idPrestamo int NOT NULL,
+idTipReq int NOT NULL,
+idLibro int NOT NULL,
+idCarnet int NOT NULL
+)
+
+
+
+INSERT INTO PrestamoLibro (fecha_prestamo,fecha_devolucion,devuelto,fuera_fecha,
+fecha_real_usuario,cantidad_libros,observacion) VALUES 
+(,,,),
+(,,,),
+(,,,),
+(,,,),
+(,,,),
+(,,,),
+(,,,),
